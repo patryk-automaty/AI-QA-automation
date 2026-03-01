@@ -35,7 +35,13 @@ def main():
     print(final_state.get("requirements_doc"))
     print("="*50)
 
+    print("\n" + "="*50)
+    print("GENERATED TEST CASES (BDD Format):")
+    print("="*50)
+    test_case_list = final_state.get("test_cases")
+    if test_case_list:
+        print(test_case_list[0])
+    print("="*50) 
+
 if __name__ == "__main__":
     main()
-
-
