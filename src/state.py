@@ -2,7 +2,7 @@ from typing import TypedDict, List, Optional
 
 
 class AgentState(TypedDict):
-    targer_url: str
+    targer_url: str = "https://automationteststore.com/"
     requirements_doc: Optional[str]
     test_cases: List[str]
     generated_code: Optional[str]
