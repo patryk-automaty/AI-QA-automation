@@ -2,4 +2,4 @@
 .env.example
 __pycache__/
 .env
-generated_tests/
+docs/

@@ -3,7 +3,7 @@ from src.state import AgentState
 from src.agents.analyst import BusinessAnalyst
 from src.agents.designer import TestDesigner
 from src.agents.reviewer import QAReviewer
-from src.agents.sdet import SDETAgent
+
 
 
 def create_workflow():
@@ -18,15 +18,14 @@ def create_workflow():
     analyst = BusinessAnalyst()
     qa_test_designer = TestDesigner()
     qa_reviewer = QAReviewer()
-    sdet_playwright = SDETAgent()
+
 
 
     # add nodes
     workflow.add_node("business_analyst", analyst.analyze_requirements)
     workflow.add_node("qa_test_designer", qa_test_designer.create_test_cases)
     workflow.add_node("qa_reviewer", qa_reviewer.review_test_cases)
-    workflow.add_node("sdet_playwright", sdet_playwright.write_playwright_tests)
-    
+
     # define edges
     # start analyst
     workflow.set_entry_point("business_analyst")
@@ -37,11 +36,8 @@ def create_workflow():
     # qa test designer provides test cases to reivew
     workflow.add_edge("qa_test_designer", "qa_reviewer")
 
-    # qa reviewer provides test cases to playwright developer
-    workflow.add_edge("qa_reviewer", "sdet_playwright")
-
     # qa reviewer return updated test cases
-    workflow.add_edge("sdet_playwright", END)
+    workflow.add_edge("qa_reviewer", END)
 
     # return compile workflow
     return workflow.compile()
