@@ -13,7 +13,7 @@ def main():
 
     # define initial state
     initial_state = {
-        "target_url": "https://automationteststore.com/",
+        "target_url": "https://www.automationexercise.com/",
         "requirements_doc": None,
         "test_cases": [],
         "generated_code": None,

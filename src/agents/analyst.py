@@ -16,7 +16,7 @@ class BusinessAnalyst:
         # prepare blueprint for agent
         messages = [
             SystemMessage(content="You are a accurate Business Analyst and QA expert. Your output must be clearly and readable professional Markdown."),
-            HumanMessage(content=f"""Create a brief Product Requirements Document for this website: {url},
+            HumanMessage(content=f"""Create a brief Product Requirements Document for this website: https://www.automationexercise.com/,
                          Focus on core functionalities that a QA would need to test (e.g login, navigation, search, cart, and so on).
                          Keep it consise
                          """)
