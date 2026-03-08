@@ -1,12 +1,17 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
+import { SignUp } from '../pages/SignUp';
+import validUser from '../test-data/vaildUser.json'
+
 
 test.describe('User Authentication', () => {
 
     let loginPage: LoginPage;
+    let signupPage: SignUp;
 
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
+        signupPage = new SignUp(page);
         await loginPage.blockAds();
     });
 
@@ -33,12 +38,25 @@ test.describe('User Authentication', () => {
 
     test('Unsuccessful login with empty fields', async ({ page }) => {
         await loginPage.navigate();
-        await loginPage.acceptCookies()
+        await loginPage.acceptCookies();
         await loginPage.userEmailInput.fill("patry123@gmail.com");
         await loginPage.loginButton.click();
         const validationMsg = await loginPage.getPasswordValidationMessage();
         expect(validationMsg).toBe("Please fill out this field.")
 
-    })
+        })
 
+    test('Successful registration with valid information', async ({page}) => {
+        await loginPage.navigate();
+        await loginPage.acceptCookies();
+
+        const fullName = `${validUser.firstName}${validUser.lastName}`;
+        const uniqueEmail = `patryk_test_${Date.now()}@testypw.com`;
+        await loginPage.performSignup(fullName, uniqueEmail)
+        await signupPage.fillPersonalInformation(validUser);
+        await signupPage.createAccountButton.click();
+        
+        const successMsg = page.getByText('Account Created!');
+        await expect(successMsg).toBeVisible();
+        })
     });
