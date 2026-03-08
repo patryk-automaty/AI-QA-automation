@@ -21,7 +21,7 @@ test.describe('User Authentication', () => {
         });
     
     test('Unsuccessful login with invalid credentials', async ({ page }) => {
-        await loginPage.navigate()
+        await loginPage.navigate();
         await loginPage.acceptCookies();
         await loginPage.performLogin("testowymail11231123@mailowy.com","testhaslo1234");
 
@@ -29,4 +29,16 @@ test.describe('User Authentication', () => {
         await expect(incorrectLoginText).toBeVisible();
 
         })
+   
+
+    test('Unsuccessful login with empty fields', async ({ page }) => {
+        await loginPage.navigate();
+        await loginPage.acceptCookies()
+        await loginPage.userEmailInput.fill("patry123@gmail.com");
+        await loginPage.loginButton.click();
+        const validationMsg = await loginPage.getPasswordValidationMessage();
+        expect(validationMsg).toBe("Please fill out this field.")
+
+    })
+
     });

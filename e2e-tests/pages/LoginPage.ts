@@ -43,4 +43,9 @@ export class LoginPage extends BasePage {
         await this.signupButton.click();
     }
 
+    async getPasswordValidationMessage(): Promise<string> {
+        return await this.userPasswordInput.evaluate((element: HTMLInputElement) => {
+            return element.validationMessage;
+        });
+    }
 }
