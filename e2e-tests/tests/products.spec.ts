@@ -14,8 +14,14 @@ test.describe("Product Search", () => {
         await productPage.navigate();
         await productPage.acceptCookies();
         await productPage.searchProduct("dress")
-        const results = page
         await expect(productPage.productCards.first()).toBeVisible();
+    })
+
+    test("Unsuccessful product search with no results", async ({page}) => {
+        await productPage.navigate();
+        await productPage.acceptCookies();
+        await productPage.searchProduct("no searching result");
+        await expect(productPage.productsImages).toHaveCount(0);
     })
 
     })

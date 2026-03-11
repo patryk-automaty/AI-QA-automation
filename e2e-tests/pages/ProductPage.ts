@@ -7,6 +7,7 @@ export class ProductPage extends BasePage {
     readonly searchInput: Locator;
     readonly searchButton: Locator;
     readonly productCards: Locator;
+    readonly productsImages: Locator;
 
 
     constructor(page: Page) {
@@ -14,9 +15,8 @@ export class ProductPage extends BasePage {
         super(page)
         this.searchInput = page.locator("#search_product");
         this.searchButton = page.locator("#submit_search");
-        this.productCards = page.locator(".features_items")
-        
-
+        this.productCards = page.locator(".features_items");
+        this.productsImages = page.locator('.product-image-wrapper');
     }
 
     async navigate() {
