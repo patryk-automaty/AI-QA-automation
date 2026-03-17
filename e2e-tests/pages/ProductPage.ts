@@ -8,6 +8,7 @@ export class ProductPage extends BasePage {
     readonly searchButton: Locator;
     readonly productCards: Locator;
     readonly productsImages: Locator;
+    readonly viewProductButton: Locator;
 
 
     constructor(page: Page) {
@@ -17,6 +18,7 @@ export class ProductPage extends BasePage {
         this.searchButton = page.locator("#submit_search");
         this.productCards = page.locator(".features_items");
         this.productsImages = page.locator('.product-image-wrapper');
+        this.viewProductButton = page.getByText("View Product");
     }
 
     async navigate() {
@@ -27,5 +29,10 @@ export class ProductPage extends BasePage {
         await this.searchInput.fill(produktName);
         await this.searchButton.click();
     }
+
+    async viewProductDetails(): Promise<void> {
+        await this.viewProductButton.first().click()
+    }
+
 }
 
