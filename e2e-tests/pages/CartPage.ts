@@ -8,6 +8,7 @@ export class CartPage extends BasePage {
     readonly productQuantity: Locator;
     readonly deleteButton: Locator;
     readonly emptyCartInformation: Locator;
+    readonly proceedToCheckoutButton: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -16,6 +17,7 @@ export class CartPage extends BasePage {
         this.productQuantity = page.locator('.cart_quantity button');
         this.deleteButton = page.locator(".cart_quantity_delete");
         this.emptyCartInformation = page.locator("#empty_cart")
+        this.proceedToCheckoutButton = page.getByText('Proceed To Checkout');    
     }
 
     async navigate() {
@@ -24,6 +26,10 @@ export class CartPage extends BasePage {
 
     async removeProduct() {
         await this.deleteButton.click();
+    }
+
+    async proceedToCheckout() {
+        await this.proceedToCheckoutButton.click();
     }
 
 }
