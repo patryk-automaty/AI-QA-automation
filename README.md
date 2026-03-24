@@ -25,16 +25,16 @@ Instead of relying solely on AI to write and execute code (which is prone to err
   - [x] Create QA Reviewer Agent (Quality Gate & Edge Cases).
   - [x] Save final output to `docs/TEST_PLAN.md`.
 
-- [] **Phase 2: Human-in-the-Loop Automation (Current)**
-  - [ ] Initialize Node.js + TypeScript + Playwright project.
-  - [ ] Manually implement E2E tests based on `TEST_PLAN.md`.
-  - [ ] Configure structured JSON reporting.
+- [] **Phase 2: Human-in-the-Loop Automation**
+  - [x] Initialize Node.js + TypeScript + Playwright project.
+  - [x] Manually implement E2E tests based on `TEST_PLAN.md`.
+  - [x] Configure structured JSON reporting.
 
-- [ ] **Phase 3: DevOps & Execution**
-  - [ ] Dockerize the Playwright testing environment.
-  - [ ] Ensure seamless execution via terminal commands.
+- [x] **Phase 3: DevOps & Execution**
+  - [x] Dockerize the Playwright testing environment.
+  - [x] Ensure seamless execution via terminal commands.
 
-- [ ] **Phase 4: AI Report Analyzer**
+- [ ] **Phase 4: AI Report Analyzer(current)**
   - [ ] Create LangGraph Node to ingest `report.json`.
   - [ ] Use LLM to diagnose stack traces.
   - [ ] Generate business-friendly `TEST_RESULTS.md`.
